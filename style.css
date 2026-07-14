@@ -426,3 +426,16 @@ a {
 .scroll-arrow {
     will-change: opacity;
 }
+
+.project-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.project-thumbnail {
+    display: block;
+    width: 100%;
+    height: auto;
+}
