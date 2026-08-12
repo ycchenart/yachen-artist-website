@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 MA Painting Postgraduate Show — Ya-Chen Chen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+   <header class="site-header">
+
+        <a class="site-name" href="index.html">
+            YA-CHEN CHEN
+        </a>
+
+        <nav class="main-nav">
+            <a href="#works">Works</a>
+            <a href="#exhibitions">Exhibitions</a>
+            <a href="#info">Info</a>
+        </nav>
+
+    </header>
+    <main class="exhibition-page">
+
+   <section class="exhibition-intro">
+            <h1>2026 Mind the Gap</h1>
+
+            <p>
+                The Crypt Gallery, London
+            </p>
+        </section>
+
+       <section class="gallery-slider">
+    <div class="gallery-frame">
+
+        <div class="gallery-slide is-active">
+            <img
+                src="images/exhibitions/2026-Mind-the-Gap/installation view 01.jpg"
+                alt="Mind the Gap installation view 1"
+            >
+        </div>
+
+        <div class="gallery-slide">
+            <img
+                src="images/exhibitions/2026-Mind-the-Gap/installation view 02.jpg"
+                alt="Mind the Gap installation view 2"
+            >
+        </div>
+
+        <div class="gallery-slide">
+            <img
+                src="images/exhibitions/2026-Mind-the-Gap/map.jpeg"
+                alt="Mind the Gap exhibition map"
+            >
+        </div>
+
+        <div class="gallery-slide">
+            <img
+                src="images/exhibitions/2026-Mind-the-Gap/poster.jpeg"
+                alt="Mind the Gap exhibition poster"
+            >
+        </div>
+
+        <button class="gallery-arrow gallery-prev" type="button" aria-label="Previous image">‹</button>
+        <button class="gallery-arrow gallery-next" type="button" aria-label="Next image">›</button>
+
+        <div class="gallery-dots">
+            <button class="gallery-dot is-active" type="button" aria-label="Image 1"></button>
+            <button class="gallery-dot" type="button" aria-label="Image 2"></button>
+            <button class="gallery-dot" type="button" aria-label="Image 3"></button>
+            <button class="gallery-dot" type="button" aria-label="Image 4"></button>
+        </div>
+
+    </div>
+</section>
+
+<section class="exhibition-work-list">
+
+    <a href="作品頁面.html" class="work-list-item">
+        <span class="work-title">Guanzizai I</span>
+        <span class="work-details">Oil and Chinese ink colleges on canvas · 1200 × 600 mm · 2026</span>
+    </a>
+
+    <a href="作品頁面.html" class="work-list-item">
+        <span class="work-title">Guazizai II</span>
+        <span class="work-details">Oil and Chinese ink colleges on canvas · 1200 × 1000 mm · 2026</span>
+    </a>
+
+</section>
+    </main>
+
+<script>
+    const gallerySlides = document.querySelectorAll('.gallery-slide');
+    const galleryDots = document.querySelectorAll('.gallery-dot');
+    const galleryPrev = document.querySelector('.gallery-prev');
+    const galleryNext = document.querySelector('.gallery-next');
+
+    let galleryIndex = 0;
+
+    function showGallerySlide(index) {
+        galleryIndex =
+            (index + gallerySlides.length) % gallerySlides.length;
+
+        gallerySlides.forEach((slide, i) => {
+            slide.classList.toggle('is-active', i === galleryIndex);
+        });
+
+        galleryDots.forEach((dot, i) => {
+            dot.classList.toggle('is-active', i === galleryIndex);
+        });
+    }
+
+    galleryPrev.addEventListener('click', () => {
+        showGallerySlide(galleryIndex - 1);
+    });
+
+    galleryNext.addEventListener('click', () => {
+        showGallerySlide(galleryIndex + 1);
+    });
+
+    galleryDots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            showGallerySlide(i);
+        });
+    });
+</script>
+
+</body>
+</html>
