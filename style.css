@@ -651,7 +651,7 @@ a {
 
 .exhibition-work-list {
     width: min(820px, 72vw);
-    margin: 140px auto 160px;
+    margin: 140px auto 40px;
 }
 
 .work-list-item {
@@ -1019,4 +1019,40 @@ a {
         margin-top: 12px;
     }
 
+}
+
+.exhibition-external-link {
+    width: min(830px, calc(100% - 80px));
+    margin: -8px auto 100px;
+}
+
+.exhibition-external-link a {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.55);
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.exhibition-external-link a:hover {
+    color: #111;
+}
+
+.exhibition-external-links {
+    width: min(830px, calc(100% - 80px));
+    margin: 0 auto 100px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.exhibition-external-links a {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.55);
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.exhibition-external-links a:hover {
+    color: #111;
 }
