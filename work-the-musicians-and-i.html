@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Musicians and I — Ya-Chen Chen</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+
+        <a class="site-name" href="index.html">
+            YA-CHEN CHEN
+        </a>
+
+        <nav class="main-nav">
+            <a href="works.html">Works</a>
+            <a href="index.html#exhibitions">Exhibitions</a>
+            <a href="index.html#info">Info</a>
+        </nav>
+
+    </header>
+
+
+    <main class="artwork-page">
+
+        <section class="artwork-visual">
+
+            <div class="artwork-slider" id="artwork-slider">
+
+                <div class="artwork-slide">
+                    <img
+                        src="images/works/the-musicians-and-i/overview-01.jpg"
+                        alt="The Musicians and I overview"
+                    >
+                </div>
+
+            </div>
+
+
+            <div class="artwork-thumbnails">
+
+                <button
+                    class="artwork-thumb is-active"
+                    type="button"
+                    aria-label="View overview"
+                >
+                    <img
+                        src="images/works/the-musicians-and-i/overview-01.jpg"
+                        alt="The Musicians and I overview thumbnail"
+                    >
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <section class="artwork-info">
+
+            <h1>
+                <em>The Musicians and I</em>
+            </h1>
+
+            <div class="artwork-meta">
+                <p>
+                    2021<br>
+                    Oil on canvas<br>
+                    725 × 910 mm
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const slider = document.getElementById("artwork-slider");
+        const slides = Array.from(document.querySelectorAll(".artwork-slide"));
+        const thumbs = Array.from(document.querySelectorAll(".artwork-thumb"));
+
+        let currentIndex = 0;
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+        let sliderWidth = 0;
+
+        function positionSlides(offset = 0) {
+            sliderWidth = slider.clientWidth;
+
+            slides.forEach((slide, index) => {
+                const position =
+                    (index - currentIndex) * sliderWidth + offset;
+
+                slide.style.transform =
+                    `translate3d(${position}px, 0, 0)`;
+            });
+        }
+
+        function updateThumbs() {
+            thumbs.forEach((thumb, index) => {
+                thumb.classList.toggle(
+                    "is-active",
+                    index === currentIndex
+                );
+            });
+        }
+
+        function goToSlide(index) {
+            index = Math.max(
+                0,
+                Math.min(index, slides.length - 1)
+            );
+
+            currentIndex = index;
+
+            slider.classList.add("is-animating");
+            positionSlides(0);
+            updateThumbs();
+
+            window.setTimeout(() => {
+                slider.classList.remove("is-animating");
+            }, 430);
+        }
+
+        thumbs.forEach((thumb, index) => {
+            thumb.addEventListener("click", () => {
+                if (index === currentIndex) return;
+                goToSlide(index);
+            });
+        });
+
+        slider.addEventListener("pointerdown", (event) => {
+            if (event.pointerType === "mouse" && event.button !== 0) {
+                return;
+            }
+
+            isDragging = true;
+            startX = event.clientX;
+            currentX = event.clientX;
+            sliderWidth = slider.clientWidth;
+
+            slider.classList.remove("is-animating");
+            slider.setPointerCapture(event.pointerId);
+        });
+
+        slider.addEventListener("pointermove", (event) => {
+            if (!isDragging) return;
+
+            currentX = event.clientX;
+
+            let distance = currentX - startX;
+
+            const draggingPastStart =
+                currentIndex === 0 && distance > 0;
+
+            const draggingPastEnd =
+                currentIndex === slides.length - 1 &&
+                distance < 0;
+
+            if (draggingPastStart || draggingPastEnd) {
+                distance *= 0.22;
+            }
+
+            positionSlides(distance);
+        });
+
+        function endDrag(event) {
+            if (!isDragging) return;
+
+            isDragging = false;
+
+            const distance = currentX - startX;
+            const threshold = sliderWidth * 0.15;
+
+            if (
+                distance < -threshold &&
+                currentIndex < slides.length - 1
+            ) {
+                goToSlide(currentIndex + 1);
+            }
+
+            else if (
+                distance > threshold &&
+                currentIndex > 0
+            ) {
+                goToSlide(currentIndex - 1);
+            }
+
+            else {
+                goToSlide(currentIndex);
+            }
+
+            if (
+                event.pointerId !== undefined &&
+                slider.hasPointerCapture(event.pointerId)
+            ) {
+                slider.releasePointerCapture(event.pointerId);
+            }
+        }
+
+        slider.addEventListener("pointerup", endDrag);
+        slider.addEventListener("pointercancel", endDrag);
+
+        window.addEventListener("resize", () => {
+            positionSlides(0);
+        });
+
+        positionSlides(0);
+        updateThumbs();
+
+    </script>
+
+</body>
+
+</html>
