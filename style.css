@@ -1056,3 +1056,70 @@ a {
 .exhibition-external-links a:hover {
     color: #111;
 }
+
+.site-copyright {
+    width: 100%;
+    padding: 18px 20px 42px;
+
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+
+    color: rgba(0, 0, 0, 0.32);
+    box-sizing: border-box;
+}
+
+/* ABIUT PAGE TEXT STYLE */
+
+#about {
+    color: rgba(0, 0, 0, 0.68);
+}
+
+#about p,
+#about .about-text,
+#about .about-group {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+#about h3 {
+    font-size: 25px;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.82);
+}
+
+#about em {
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.72);
+}
+
+.exhibition-history {
+    margin-bottom: 70px;
+}
+
+.about-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 260px;
+    gap: 60px;
+    align-items: start;
+    margin-bottom: 70px;
+}
+
+.about-photo {
+    width: 260px;
+}
+
+.about-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+#info p,
+#info .info-group {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: rgba(0, 0, 0, 0.62);
+}
