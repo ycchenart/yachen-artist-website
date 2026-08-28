@@ -464,11 +464,43 @@ a {
     font-size: 14px;
 }
 
+
+#info .exhibition-heading {
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.78);
+}
+
 @media (max-width: 768px) {
     .exhibition-grid {
         grid-template-columns: 1fr;
     }
+
+
+
+#info .about-top {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 28px;
 }
+
+#info .about-photo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#info .about-photo img {
+    display: block;
+    width: 70%;
+    max-width: 320px;
+    height: auto;
+}
+
+#info .about-bio {
+    width: 100%;
+}
+}
+
 /* Individual exhibition page */
 
 .exhibition-page {
