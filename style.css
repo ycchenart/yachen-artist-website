@@ -80,7 +80,7 @@ a {
     top: 62px;
     left: 50%;
 
-    width: 108vw;
+    width: 100vw;
     height: calc(100vh - 80px);
 
     background-image: url("images/chen-background.png");
@@ -412,6 +412,14 @@ a {
     .content-section {
         padding-left: 20px;
         padding-right: 20px;
+    }
+
+    .site-copyright {
+        font-size: 7px;
+        letter-spacing: 0.02em;
+        padding-left: 6px;
+        padding-right: 6px;
+        white-space: nowrap;
     }
 }
 
@@ -1154,4 +1162,14 @@ a {
     font-weight: 300;
     line-height: 1.65;
     color: rgba(0, 0, 0, 0.62);
+}
+
+@media (max-width: 700px) {
+    .site-copyright {
+        font-size: 7px;
+        letter-spacing: 0.02em;
+        padding-left: 6px;
+        padding-right: 6px;
+        white-space: nowrap;
+    }
 }
