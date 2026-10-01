@@ -128,3 +128,24 @@ window.addEventListener("resize", updateHomeBackground);
 
 // 頁面載入後先執行一次
 updateHomeBackground();
+
+const exhibitionItems = document.querySelectorAll(".exhibition-mobile-toggle");
+
+exhibitionItems.forEach((item) => {
+    item.addEventListener("click", (event) => {
+
+        if (window.innerWidth > 700) return;
+
+        const isOpen = item.classList.contains("is-open");
+
+        if (!isOpen) {
+            event.preventDefault();
+
+            exhibitionItems.forEach((otherItem) => {
+                otherItem.classList.remove("is-open");
+            });
+
+            item.classList.add("is-open");
+        }
+    });
+});
